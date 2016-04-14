@@ -1,15 +1,15 @@
 @extends('backend.templates.layout')
 
 @section('style_head')
-@include('partials.datatable')
+	@include('partials.datatable')
 @stop
 
 @section('title')
-Sampah
+	Sampah
 @stop
 
 @section('header')
-Sampah <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#addSampah">Tambah Sampah</button>
+	Sampah <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#addSampah">Tambah Sampah</button>
 @stop
 
 @section('content')
@@ -56,6 +56,4 @@ Sampah <button type="button" class="btn btn-info btn-xs" data-toggle="modal" dat
 		</div>
 	</div>
 </div>
-
-
 @stop

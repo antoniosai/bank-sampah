@@ -45,19 +45,6 @@
             <!--logo start-->
             <a href="{{ action('AdminController@getDashboard') }}" class="logo">BANK <span>SAM</span><span class="lite">PAH</span></a>
             <!--logo end-->
-
-            <div class="nav search-row" id="top_menu">
-                <!--  search form start -->
-                <ul class="nav top-menu">
-                    <li>
-                        <form class="navbar-form">
-                            <input class="form-control" placeholder="Norek, Nama Nasabah dll." type="text">
-                        </form>
-                    </li>
-                </ul>
-                <!--  search form end -->
-            </div>
-
             <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
@@ -310,18 +297,6 @@
                           <span>Dashboard</span>
                       </a>
                   </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>UI Kit</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="general.html">General</a></li>
-                          <li><a class="" href="buttons.html">Buttons</a></li>
-                          <li><a class="" href="grids.html">Grids</a></li>
-                      </ul>
-                  </li>
                   <li>
                       <a class="" href="{{ action('SampahController@getSampahAll') }}">
                           <i class="icon_genius"></i>
@@ -338,41 +313,14 @@
                       <a href="javascript:;" class="">
                           <i class="icon_document_alt"></i>
                           <span>Laporan</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                   </li>
                    <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="icon_info"></i>
-                          <span>Petunuk</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
+                          <span>Bantuan</span>
                       </a>
                   </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_table"></i>
-                          <span>Tables</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="basic_table.html">Basic Table</a></li>
-                      </ul>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
-                          <span>Pages</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="profile.html">Profile</a></li>
-                          <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                          <li><a class="" href="blank.html">Blank Page</a></li>
-                          <li><a class="" href="404.html">404 Error</a></li>
-                      </ul>
-                  </li>
-
               </ul>
               <!-- sidebar menu end-->
           </div>

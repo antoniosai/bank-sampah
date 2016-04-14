@@ -52,17 +52,35 @@ Route::get('test', function(){
 
 	// $data = $nasabah->sampah()->attach(1, ['qty' => 0.5, 'price' => 0.5 * 1000]);
 
-	// if($data){
-	// 	echo "Sukses";
-	// } else {
-	// 	echo "gagal";
-	// }
+$nasabah = Nasabah::find(2);
+$nasabah->simpan(2, 5);
 
-	$query = DB::table('nasabah')
-			->select('nasabah.nama', 'nasabah.tempat_lahir', 'nasabah.tanggal_lahir', 'nasabah.alamat','nasabah.no_telp','nasabah.created_at','nasabah.updated_at')
-			->orderBy('nasabah.created_at', 'asc')->get();
+	$idNasabah = Nasabah::find(1)->id;
 
-			return$data = new Illuminate\Database\Eloquent\Collection($query);
+										echo $tabbb = Temp::select('price')->where('created_at', '>', date('Y-m-d 00:00:00'))->where('created_at', '<', date('Y-m-d 23:59:59'))->get();
+										$total = 0;
+										foreach ($tabbb as $omo) {
+											$total = $total + $omo->price;
+										}
+										echo $total;
+// 										 $aneh = array(
+// 										 	array('id' => 1, 'nasabah_id' => 1, 'debit' => 10000),
+// 										 	array('id' => 2, 'nasabah_id' => 2, 'debit' => 10000)
+// 										 );
+//
+
+// DB::table('tabungan')->insert($aneh);
+// $tabungan  = new Tabungans;
+// $tabungan->nasabah_id = 3;
+// $tabungan->kredit = $data;
+// $tabungan->save();
+//
+// return $tabungan;
+
+
+
+	// $nasabah = Nasabah::find(1);
+	// echo $nasabah;
 
 });
 
