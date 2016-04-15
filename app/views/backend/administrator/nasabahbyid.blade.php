@@ -56,15 +56,15 @@ Data Nasabah
 			<header class="panel-heading tab-bg-info">
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a data-toggle="tab" href="#recent-activity">
+						<a data-toggle="tab" href="#tabungan">
 							<i class="icon-home"></i>
-							Aktivitas Nasabah
+							Tabungan
 						</a>
 					</li>
 					<li>
-						<a data-toggle="tab" href="#profile">
+						<a data-toggle="tab" href="#recent-activity">
 							<i class="icon-user"></i>
-							Tabungan
+							Aktivitas Nasabah
 						</a>
 					</li>
 					<li class="">
@@ -77,7 +77,7 @@ Data Nasabah
 			</header>
 			<div class="panel-body">
 				<div class="tab-content">
-					<div id="recent-activity" class="tab-pane active">
+					<div id="recent-activity" class="tab-pane">
 						<div class="profile-activity">
 							<div class="act-time">
 								<div class="activity-body act-in">
@@ -141,7 +141,7 @@ Data Nasabah
 						</div>
 					</div>
 					<!-- profile -->
-					<div id="profile" class="tab-pane">
+					<div id="tabungan" class="tab-pane active">
 						<section class="panel">
 							<hr/>
 								<p>
@@ -150,7 +150,7 @@ Data Nasabah
 								<a href="#" class="btn btn-success">Print</a>
 								<a href="#" class="btn btn-info">Export To PDF</a>
 							<hr/>
-							<table class="table">
+							<table class="table table-striped">
 								<tr>
 									<th>No</th>
 									<th>Tanggal</th>
@@ -165,7 +165,7 @@ Data Nasabah
 									->select('tabungan.created_at as tanggal', 'tabungan.debit', 'tabungan.kredit')
 									->where('nasabah.id', '=', $nasabah->id )
 									->orderBy('tabungan.created_at', 'ASC');
-									$tabungan = $data->get();
+									$tabungan = $data->paginate(2);
 									$no = 1;
 
 									function format_rupiah($val){
@@ -200,6 +200,16 @@ Data Nasabah
 								</tr>
 								@endforeach
 							</table>
+							{{ $tabungan->links() }}
+							<!--{{ Datatable::table()
+								->addColumn('Tanggal','Tranksaksi', 'Debit', 'Kredit', 'Saldo')
+								->setUrl(route('api.tabungan'))
+								->setOptions('aaSorting', array(
+									array(00, 'ASC')
+									))
+								->setClass('table table-stripped')
+								->render()
+							}}-->
 						</section>
 						<section>
 							<div class="row">
