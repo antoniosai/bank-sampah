@@ -43,7 +43,7 @@
             </div>
 
             <!--logo start-->
-            <a href="{{ action('AdminController@getDashboard') }}" class="logo">BANK <span>SAM</span><span class="lite">PAH</span></a>
+            <img src="{{ asset('img/logo.jpg' )}}" class="logo" style="height: 50px; margin-top : 5px" alt="" />
             <!--logo end-->
             <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
@@ -292,7 +292,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">
                   <li class="active">
-                      <a class="" href="index.html">
+                      <a class="" href="{{ action('AdminController@getDashboard')}}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>

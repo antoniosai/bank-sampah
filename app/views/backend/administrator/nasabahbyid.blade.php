@@ -58,13 +58,13 @@ Data Nasabah
 					<li class="active">
 						<a data-toggle="tab" href="#recent-activity">
 							<i class="icon-home"></i>
-							Recent Activity
+							Aktivitas Nasabah
 						</a>
 					</li>
 					<li>
 						<a data-toggle="tab" href="#profile">
 							<i class="icon-user"></i>
-							Profile
+							Tabungan
 						</a>
 					</li>
 					<li class="">
@@ -83,7 +83,6 @@ Data Nasabah
 								<div class="activity-body act-in">
 									<span class="arrow"></span>
 									<div class="text">
-										<a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
 										<p class="attribution"><a href="#">Edgar Parks</a> at 4:25pm, 30th Octmber 2013</p>
 										<p>An Awesome Piece of Cake For You Guys!</p>
 									</div>
@@ -139,74 +138,68 @@ Data Nasabah
 									</div>
 								</div>
 							</div>
-							<div class="act-time">
-								<div class="activity-body act-in">
-									<span class="arrow"></span>
-									<div class="text">
-										<a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-										<p class="attribution"><a href="#">Jewell Clark</a> at 5:25am, 30th Octmber 2013</p>
-										<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-									</div>
-								</div>
-							</div>
-							<div class="act-time">
-								<div class="activity-body act-in">
-									<span class="arrow"></span>
-									<div class="text">
-										<a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-										<p class="attribution"><a href="#">Lorena Rose</a> at 5:25am, 30th Octmber 2013</p>
-										<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-									</div>
-								</div>
-							</div>
-							<div class="act-time">
-								<div class="activity-body act-in">
-									<span class="arrow"></span>
-									<div class="text">
-										<a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-										<p class="attribution"><a href="#">Brandy Childress</a> at 5:25am, 30th Octmber 2013</p>
-										<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-									</div>
-								</div>
-							</div>
-
 						</div>
 					</div>
 					<!-- profile -->
 					<div id="profile" class="tab-pane">
 						<section class="panel">
-							<div class="bio-graph-heading">
-								Hello I’m John Smith, a leading expert in interactive and creative design specializing in the mobile medium. My graduation from Massey University with a Bachelor of Design majoring in visual communication.
-							</div>
-							<div class="panel-body bio-graph-info">
-								<h1>Bio Graph</h1>
-								<div class="row">
-									<div class="bio-row">
-										<p><span>First Name </span>: Jonathan</p>
-									</div>
-									<div class="bio-row">
-										<p><span>Last Name </span>: Smith</p>
-									</div>
-									<div class="bio-row">
-										<p><span>Birthday</span>: 18 June 1990</p>
-									</div>
-									<div class="bio-row">
-										<p><span>Country </span>: Los Angeles</p>
-									</div>
-									<div class="bio-row">
-										<p><span>Occupation </span>: UI Designer</p>
-									</div>
-									<div class="bio-row">
-										<p><span>Email </span>: johnf@karmanta.com</p>
-									</div>
-									<div class="bio-row">
-										<p><span>Mobile </span>: (08) 564 789</p>
-									</div>
-									<div class="bio-row">
-										<p><span>Phone </span>:  (+91) 90164 18808</p>
-									</div>
-								</div>
-							</div>
+							<hr/>
+								<p>
+									akjaklsdj
+								</p>
+								<a href="#" class="btn btn-success">Print</a>
+								<a href="#" class="btn btn-info">Export To PDF</a>
+							<hr/>
+							<table class="table">
+								<tr>
+									<th>No</th>
+									<th>Tanggal</th>
+									<th>Tranksaksi</th>
+									<th>Debit</th>
+									<th>Kredit</th>
+									<th>Saldo</th>
+								</tr>
+								<?php
+									$data = DB::table('tabungan')
+									->join('nasabah', 'nasabah.id', '=', 'tabungan.nasabah_id')
+									->select('tabungan.created_at as tanggal', 'tabungan.debit', 'tabungan.kredit')
+									->where('nasabah.id', '=', $nasabah->id )
+									->orderBy('tabungan.created_at', 'ASC');
+									$tabungan = $data->get();
+									$no = 1;
+
+									function format_rupiah($val){
+									  echo "Rp ". $rupiah=number_format($val,0,',','.');
+									}
+								?>
+								@foreach($tabungan as $buku)
+								<tr>
+									<td>{{ $no++ }}</td>
+									<td>{{ $buku->tanggal }}</td>
+									<td>Menabung Sampah</td>
+									<td>
+										<?php if ($buku->debit == NULL || $buku->debit == 0): ?>
+											{{ '-'; }}
+										<?php else: ?>
+											{{ format_rupiah($buku->debit) }}
+										<?php endif; ?>
+									</td>
+									<td>
+										<?php if ($buku->kredit == NULL || $buku->kredit == 0): ?>
+											{{ '-'; }}
+										<?php else: ?>
+											{{ format_rupiah($buku->kredit) }}
+										<?php endif; ?>
+									</td>
+									<td>
+										 <?php
+										 	$saldo = $buku->debit - $buku->kredit;
+											echo format_rupiah($saldo);
+										 ?>
+									</td>
+								</tr>
+								@endforeach
+							</table>
 						</section>
 						<section>
 							<div class="row">
