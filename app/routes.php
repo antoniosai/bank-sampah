@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('frontend.login')->with('successMessage', 'Silahkan Masuk');
 });
 
 Route::get('/api/nasabah', array('as' => 'api.nasabah', 'uses' => 'NasabahController@nasabahApi'));
@@ -34,10 +34,38 @@ Route::group(['prefix' => '/','before'=>'auth'],function(){
 		Route::get('show/nasabah', 'NasabahController@getNasabahAll');
 		Route::get('show/nasabah/{id}', array('as'=>'nasabah.show','uses'=>'NasabahController@getNasabahById'));
 		Route::get('show/sampah', 'SampahController@getSampahAll');
+		Route::get('bantuan', 'BantuanController@getShowBantuan');
+		Route::get('laporan', 'LaporanController@getShowLaporan');
 
+		Route::post('debit', 'NasabahController@debit');
+		Route::post('kredit', 'NasabahController@kredit');
 	});
 });
 
 Route::get('add/sampah', 'SampahController@postAddSampah');
 Route::get('add/nasabah', 'NasabahController@postAddNasabah');
 Route::get('edit/nasabah/{id}', 'NasabahController@postEditNasabah');
+
+Route::get('debit', function(){
+	$tabungan = new Tabungans;
+	$tabungan->nasabah_id = $id;
+	$tabungan->debit = 10000;
+	if ($tabungan->save()) {
+		$nasabah = Nasabah::find($id);
+		$nasabah->saldo = $nasabah->saldo - $kredit;
+		$nasabah->save();
+		return 'Suksess';
+	}
+});
+
+Route::get('kredit', function(){
+	$tabungan = new Tabungans;
+	$tabungan->nasabah_id = $id;
+	$tabungan->kredit = 2000;
+	if ($tabungan->save()) {
+		$nasabah = Nasabah::find($id);
+		$nasabah->saldo = $nasabah->saldo - $kredit;
+		$nasabah->save();
+		return 'Suksess';
+	}
+});

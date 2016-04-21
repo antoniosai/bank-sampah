@@ -1,11 +1,15 @@
 @extends('backend.templates.layout')
 
 @section('title')
-sda
+Dashboard
 @stop
 
 @section('header')
 Dashboard
+@stop
+
+@section('nav1')
+active
 @stop
 
 @section('content')
@@ -33,8 +37,6 @@ Dashboard
 			</div>
 		</div>
 	</section>
-	<!--user profile info end-->
-	<!-- statics start -->
 	<div class="state col-lg-12">
 		<div class="row">
 			<div class="col-lg-3 col-sm-6">
@@ -67,8 +69,11 @@ Dashboard
 						<i class="icon_cart_alt"></i>
 					</div>
 					<div class="value">
-						<h1>345</h1>
-						<p>New Order</p>
+						<?php
+						$data = DB::table('tabungan')->count();
+						?>
+						<h1>{{ $data }}</h1>
+						<p>Tranksaksi</p>
 					</div>
 				</section>
 			</div>
@@ -92,7 +97,7 @@ Dashboard
 
 <div class="row">
 	<div class="col-md-6">
-		<h2>Hasil Penjualan</h2>
+		<h2>Nasabah</h2>
 		<hr/>
 		<canvas id="buyers" width="530" height="250"></canvas>
 	</div>

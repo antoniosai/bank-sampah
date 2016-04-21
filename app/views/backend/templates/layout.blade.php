@@ -8,8 +8,8 @@
     <title>@yield('title') || Bank Sampah</title>
 
     <!-- Bootstrap CSS -->
-
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ asset('img/logo_2.png')}}">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.css') }}">
     <!-- bootstrap theme -->
     <link href="{{ asset('css/bootstrap-theme.css') }}" rel="stylesheet">
@@ -43,7 +43,7 @@
             </div>
 
             <!--logo start-->
-            <img src="{{ asset('img/logo.jpg' )}}" class="logo" style="height: 50px; margin-top : 5px" alt="" />
+            <img src="{{ asset('img/logo_1.png' )}}" class="logo" style="height: 50px; margin-top : 5px" alt="" />
             <!--logo end-->
             <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
@@ -291,32 +291,32 @@
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">
-                  <li class="active">
+                  <li class="@yield('nav1')">
                       <a class="" href="{{ action('AdminController@getDashboard')}}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
                   </li>
-                  <li>
+                  <li class="@yield('nav2')">
                       <a class="" href="{{ action('SampahController@getSampahAll') }}">
                           <i class="icon_genius"></i>
                           <span>Sampah</span>
                       </a>
                   </li>
-                  <li>
+                  <li class="@yield('nav3')">
                       <a class="" href="{{ action('NasabahController@getNasabahAll') }}">
                           <i class="icon_folder"></i>
                           <span>Nasabah</span>
                       </a>
                   </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
+                  <li class="@yield('nav4')">
+                      <a class="" href="{{ action('LaporanController@getShowLaporan') }}">
                           <i class="icon_document_alt"></i>
                           <span>Laporan</span>
                       </a>
                   </li>
-                   <li class="sub-menu">
-                      <a href="javascript:;" class="">
+                  <li class="@yield('nav5')">
+                      <a class="" href="{{ action('BantuanController@getShowBantuan') }}">
                           <i class="icon_info"></i>
                           <span>Bantuan</span>
                       </a>

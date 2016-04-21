@@ -53,9 +53,9 @@ body, html {
 }
 
 .profile-img-card {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 10px;
+    width: 160px;
+    height: 160px;
+    margin: auto;
     display: block;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -150,8 +150,8 @@ body, html {
     color: rgb(12, 97, 33);
 }
     </style>
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script type="text/javascript">
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
@@ -164,6 +164,7 @@ body, html {
           window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
         });
     </script>
+    <link rel="icon" href="{{ asset('img/logo_2.png')}}">
 </head>
 <body>
 	<!--
@@ -173,8 +174,7 @@ body, html {
     <div class="container">
         <div class="card card-container">
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-            <br/>
+            <img id="profile-img" class="profile-img-card" src="{{ asset('img/logo_2.png') }}" />
             @include('partials.alert')
             <p id="profile-name" class="profile-name-card"></p>
             <form action="{{ action('UserController@postLogin') }}" method="post" class="form-signin">

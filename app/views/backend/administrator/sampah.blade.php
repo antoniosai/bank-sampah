@@ -12,6 +12,10 @@
 	Sampah <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#addSampah">Tambah Sampah</button>
 @stop
 
+@section('nav2')
+active
+@stop
+
 @section('content')
 <div class="row">
 	<div class="col-md-6">

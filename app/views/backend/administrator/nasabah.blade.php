@@ -12,14 +12,18 @@ Nasabah
 Nasabah <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#addNasabah">Tambah Nasabah</button>
 @stop
 
+@section('nav3')
+active
+@stop
+
 @section('content')
 {{ Datatable::table()
-	->addColumn('Nama','TTL', 'Alamat', 'No Telp', 'Terdaftar', 'Disunting')
+	->addColumn('Nama','TTL', 'Alamat', 'No Telp', 'Terdaftar')
 	->setUrl(route('api.nasabah'))
 	->setOptions('aaSorting', array(
 		  array(00, 'desc')
 		))
-	->setClass('table table-striped')
+	->setClass('table table-striped table-hover')
 	->render()
 }}
 
@@ -36,29 +40,27 @@ Nasabah <button type="button" class="btn btn-info btn-xs" data-toggle="modal" da
 				<form role="form" method="get" action="{{ action('NasabahController@postAddNasabah') }}">
 					<div class="form-group">
 						<label for="sampah">Nama Nasabah</label>
-						<input type="text" class="form-control" name="nama" placeholder="Masukan Nama Nasabah">
+						<input type="text" class="form-control" name="nama" placeholder="Masukan Nama Nasabah" required>
 					</div>
 					<div class="form-group">
 						<label for="harga">Tempat Lahir</label>
-						<input type="text" class="form-control" name="tempat_lahir" placeholder="Contoh: Garut, Bandung dll.">
+						<input type="text" class="form-control" name="tempat_lahir" placeholder="Contoh: Garut, Bandung dll." required>
 					</div>
 					<div class="form-group">
 						<label for="harga">Tanggal Lahir</label>
-						<input type="date" class="form-control" name="tanggal_lahir">
+						<input type="date" class="form-control" name="tanggal_lahir" required>
 					</div>
 					<div class="form-group">
 						<label for="harga">Alamat</label><br/>
-						<textarea name="alamat" rows="4" cols="40"></textarea>
+						<textarea name="alamat" rows="4" cols="40" required></textarea>
 					</div>
 					<div class="form-group">
 						<label for="harga">No. Telephone</label>
 						<input type="text" class="form-control" name="no_telp" placeholder="08111111111">
 					</div>
-					<button type="submit" class="btn btn-success">Submit</button>
+					<hr/>
+					<button type="submit" class="btn btn-success">Simpan</button>
 				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
