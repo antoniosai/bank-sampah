@@ -6,7 +6,7 @@
 
     <title>Halaman Masuk Bank Sampah</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
+    <link href="{{ asset('styles/css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
     <style type="text/css">
     /*
  * Specific styles of signin component
@@ -150,8 +150,8 @@ body, html {
     color: rgb(12, 97, 33);
 }
     </style>
-    <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('styles/js/jquery-2.1.3.min.js') }}"></script>
+    <script src="{{ asset('styles/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript">
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
@@ -164,7 +164,7 @@ body, html {
           window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
         });
     </script>
-    <link rel="icon" href="{{ asset('img/logo_2.png')}}">
+    <link rel="icon" href="{{ asset('styles/img/logo_2.png')}}">
 </head>
 <body>
 	<!--
@@ -174,7 +174,7 @@ body, html {
     <div class="container">
         <div class="card card-container">
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="{{ asset('img/logo_2.png') }}" />
+            <img id="profile-img" class="profile-img-card" src="{{ asset('styles/img/logo_2.png') }}" />
             @include('partials.alert')
             <p id="profile-name" class="profile-name-card"></p>
             <form action="{{ action('UserController@postLogin') }}" method="post" class="form-signin">

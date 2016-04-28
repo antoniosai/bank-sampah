@@ -196,10 +196,41 @@ function format_rupiah($val){
 								$no = 1;
 								?>
 								@foreach($tabungan as $buku)
+								<?php
+								$unix = strtotime($buku->tanggal);
+								$bulan = date("m", $unix);
+								$bulan = str_replace('01', 'Januari', $bulan);
+								$bulan = str_replace('02', 'Februari', $bulan);
+								$bulan = str_replace('03', 'Maret', $bulan);
+								$bulan = str_replace('04', 'April', $bulan);
+								$bulan = str_replace('05', 'Mai', $bulan);
+								$bulan = str_replace('06', 'Juni', $bulan);
+								$bulan = str_replace('07', 'Juli', $bulan);
+								$bulan = str_replace('08', 'Agustus', $bulan);
+								$bulan = str_replace('09', 'September', $bulan);
+								$bulan = str_replace('10', 'Oktober', $bulan);
+								$bulan = str_replace('11', 'November', $bulan);
+								$bulan = str_replace('12', 'Desember', $bulan);
+								$date_timestamps = date('d', $unix) . ' ' .$bulan . ' ' . date('Y', $unix);
+
+								if ($buku->debit == NULL || $buku->debit == 0) {
+									$debit_temp = '-';
+								} else {
+									$debit_temp = format_rupiah($buku->debit);
+									$keterangan = 'Deposit sampah';
+								}
+
+								if ($buku->kredit == NULL || $buku->kredit == 0) {
+									$kredit_temp = '-';
+								} else {
+									$kredit_temp = $buku->debit;
+									$keterangan = 'Kredit';
+								}
+								?>
 								<tr>
 									<td>{{ $no++ }}</td>
-									<td>{{ $buku->tanggal }}</td>
-									<td>Menabung Sampah</td>
+									<td>{{ $date_timestamps }}</td>
+									<td>{{ $keterangan }}</td>
 									<td>
 										<?php if ($buku->debit == NULL || $buku->debit == 0): ?>
 											{{ '-'; }}
@@ -295,6 +326,7 @@ function format_rupiah($val){
 								<th>No</th>
 								<th>Sampah</th>
 								<th>Berat</th>
+								<th>Satuan</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -311,12 +343,23 @@ function format_rupiah($val){
 										</select>
 									</div>
 								</td>
-								<td style="width: 30%">
-									<div class="form-group">
-										<div class="input-group">
-											<input class="form-control" type="number" name="qty_1" value="" placeholder="Ex. 0.4, 0.5, 1.5" required>
-											<div class="input-group-addon"> kg</div>
+								<td>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<div class="input-group">
+													<input class="form-control" type="number" name="qty_1" value="" placeholder="Ex. 0.4, 0.5, 1.5" required>
+												</div>
+											</div>
 										</div>
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<select class="form-control" id="sel1">
+											<option>kg</option>
+											<option>g</option>
+										</select>
 									</div>
 								</td>
 								<td><a class="remove_item btn btn-danger btn-md disabled" href="#" >Delete</a></td>

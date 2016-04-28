@@ -19,14 +19,14 @@ class UserController extends BaseController {
 				return Redirect::to('admin')->with('successMessage', 'Anda berhasil masuk');
 			}
 		} catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
-			return Redirect::back()->with('errorMessage', 'Email dan Password salah');
+			return Redirect::back()->withInput(Input::except('password'))->with('errorMessage', 'Email dan Password salah');
 		} catch (Exception $e) {
-			return Redirect::back()->with('errorMessage', 'Email tersebut tidak ditemukan dalam sistem kami');
+			return Redirect::back()->withInput(Input::except('password'))->with('errorMessage', 'Email tersebut tidak ditemukan dalam sistem kami');
 		}
 	}
 
 	public function getRegister(){
-
+		return View::make('frontend.register');
 	}
 
 	public function postRegister(){

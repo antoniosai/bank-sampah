@@ -8,7 +8,7 @@ Bantuan
 Bantuan
 @stop
 
-@section('nav5')
+@section('nav6')
 active
 @stop
 

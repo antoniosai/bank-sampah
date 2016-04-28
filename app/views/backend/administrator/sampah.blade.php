@@ -20,7 +20,7 @@ active
 <div class="row">
 	<div class="col-md-6">
 		{{ Datatable::table()
-			->addColumn('Nama','Harga (kg)')
+			->addColumn('Nama','Harga (kg)', 'Aksi')
 			->setUrl(route('api.sampah'))
 			->setOptions('aaSorting', array(
 			array(1, 'desc')

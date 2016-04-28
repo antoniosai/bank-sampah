@@ -4,7 +4,7 @@ class SampahController extends BaseController{
 
 	public function sampahApi(){
 			$query = DB::table('sampah')
-			->select('sampah.nama', 'sampah.harga')->get();
+			->select('sampah.id','sampah.nama', 'sampah.harga')->get();
 
 			$data = new Illuminate\Database\Eloquent\Collection($query);
 
@@ -30,6 +30,9 @@ class SampahController extends BaseController{
 				$rupiah=number_format($model->harga,0,',','.');
 				return 'Rp '. $rupiah ;
 			})
+			->addColumn('akses', function($model){
+				return '<a href="'.URL::route('sampah.edit', $model->id).'" class="btn btn-warning btn-xs">Edit Sampah</a>';
+			})
 			->searchColumns('nama','harga')
 			->make();
 		}
@@ -45,5 +48,22 @@ class SampahController extends BaseController{
 		$sampah->save();
 
 		return Redirect::back()->with('successMessage', 'Sampah baru berhasil disimpan');
+	}
+
+	public function getEditSampah($id){
+		$sampah = Sampah::find($id);
+		return View::make('backend.administrator.editsampah')->with('sampah', $sampah);
+	}
+
+	public function postEditSampah(){
+		$id = Input::get('id');
+		$sampah = Sampah::find($id);
+		$sampah->nama = Input::get('nama');
+		$sampah->harga = Input::get('harga');
+		$sampah->save();
+
+		if ($sampah) {
+			return Redirect::back()->with('successMessage', 'Sampah berhasil di edit');
+		}
 	}
 }

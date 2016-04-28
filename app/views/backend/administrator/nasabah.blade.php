@@ -18,12 +18,12 @@ active
 
 @section('content')
 {{ Datatable::table()
-	->addColumn('Nama','TTL', 'Alamat', 'No Telp', 'Terdaftar')
+	->addColumn('Rekening', 'Nama','TTL', 'Alamat', 'No Telp', 'Terdaftar')
 	->setUrl(route('api.nasabah'))
 	->setOptions('aaSorting', array(
-		  array(00, 'desc')
+		  array(01, 'desc')
 		))
-	->setClass('table table-striped table-hover')
+	->setClass('table table-striped table-hover table-bordered')
 	->render()
 }}
 
