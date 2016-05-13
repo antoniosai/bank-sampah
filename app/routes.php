@@ -62,3 +62,7 @@ Route::get('test', function(){
 });
 
 Route::get('user', 'AdminController@getAllUser');
+
+Route::get('test', function(){
+	return ' Mantap gih hari ini';
+});
